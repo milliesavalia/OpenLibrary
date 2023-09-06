@@ -37,10 +37,10 @@ final class MockSearchService: SearchServiceProtocol {
 final class SearchServiceSpec: XCTestCase {
     let service: SearchServiceProtocol = MockSearchService()
     
-    func testLoad() async {
+    func testLoad() {
         Task {
             let jsonData = try await service.requestSearch(input: "")
-            XCTAssert( jsonData.count == 3)
+            XCTAssert(jsonData.count == 3)
             XCTAssert(jsonData.books.first?.title == "The Giver")
             XCTAssert(jsonData.books.first?.publishYear == 1993)
         }
